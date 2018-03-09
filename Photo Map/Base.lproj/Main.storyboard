@@ -22,13 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xlh-jS-t1X">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xlh-jS-t1X">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7K-0J-QRE">
-                                <rect key="frame" x="155" y="557" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7K-0J-QRE">
+                                <rect key="frame" x="155" y="553" width="64" height="64"/>
                                 <state key="normal" image="camera"/>
                                 <connections>
                                     <action selector="onCameraPress:" destination="ghP-Ww-KKQ" eventType="touchUpInside" id="vYT-QI-Hkr"/>
@@ -36,6 +34,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ufw-e1-uLx" firstAttribute="top" secondItem="Xlh-jS-t1X" secondAttribute="bottom" id="Fdd-g2-OSP"/>
+                            <constraint firstItem="o7K-0J-QRE" firstAttribute="centerX" secondItem="Lxe-6f-KEH" secondAttribute="centerX" id="Fuf-7D-m1n"/>
+                            <constraint firstItem="Xlh-jS-t1X" firstAttribute="leading" secondItem="Lxe-6f-KEH" secondAttribute="leading" id="L5Q-UN-Fzr"/>
+                            <constraint firstItem="Xlh-jS-t1X" firstAttribute="top" secondItem="vrG-Wc-0bn" secondAttribute="bottom" id="N96-Ig-7wD"/>
+                            <constraint firstAttribute="trailing" secondItem="Xlh-jS-t1X" secondAttribute="trailing" id="O6e-zb-K6q"/>
+                            <constraint firstItem="Xlh-jS-t1X" firstAttribute="centerX" secondItem="Lxe-6f-KEH" secondAttribute="centerX" id="grt-WP-fwg"/>
+                            <constraint firstItem="ufw-e1-uLx" firstAttribute="top" secondItem="o7K-0J-QRE" secondAttribute="bottom" constant="50" id="kti-9H-Gnl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aPF-0T-Ydb"/>
                     <connections>

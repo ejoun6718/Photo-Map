@@ -13,17 +13,6 @@ extension CGRect{
   init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat) {
     self.init(x:x,y:y,width:width,height:height)
   }
-  
-}
-extension CGSize{
-  init(_ width:CGFloat,_ height:CGFloat) {
-    self.init(width:width,height:height)
-  }
-}
-extension CGPoint{
-  init(_ x:CGFloat,_ y:CGFloat) {
-    self.init(x:x,y:y)
-  }
 }
 
 class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LocationsViewControllerDelegate, MKMapViewDelegate {
@@ -49,6 +38,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 
         // Do any additional setup after loading the view.
         //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
+        mapView.delegate = self
+    
         let sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667),
                                             MKCoordinateSpanMake(0.1, 0.1))
         mapView.setRegion(sfRegion, animated: false)
@@ -90,21 +81,22 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let annotation = MKPointAnnotation()
         annotation.coordinate = locationCoordinate
         mapView.addAnnotation(annotation)
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
-  
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseID = "myAnnotationView"
+      let reuseID = "PhotoAnnotation"
       
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
-        if (annotationView == nil) {
-          annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
-          annotationView!.canShowCallout = true
-          annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x:0, y:0, width: 50, height:50))
-        }
-      
-        let imageView = annotationView?.leftCalloutAccessoryView as! UIImageView
-        imageView.image = UIImage(named: "camera")
-      
-        return annotationView
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+      if (annotationView == nil) {
+        annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+        annotationView!.canShowCallout = true
+        annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x:0, y:0, width: 50, height:50))
       }
+      
+      let imageView = annotationView?.leftCalloutAccessoryView as! UIImageView
+      imageView.image = UIImage(named: "camera")
+      
+      return annotationView
+    }
 }
