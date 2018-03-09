@@ -85,7 +85,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-      let reuseID = "PhotoAnnotation"
+      let reuseID = "myAnnotationView"
       
       var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
       if (annotationView == nil) {
