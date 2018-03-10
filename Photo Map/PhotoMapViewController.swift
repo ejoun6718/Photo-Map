@@ -83,7 +83,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         let annotation = MKPointAnnotation()
         annotation.coordinate = locationCoordinate
-        annotation.title = "insert title here"
+        annotation.title = String(round(100 * locationCoordinate.longitude) / 100) + ", " + String(round * (locationCoordinate.latitude) / 100)
         mapView.addAnnotation(annotation)
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
