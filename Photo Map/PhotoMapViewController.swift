@@ -32,6 +32,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     self.present(vc, animated: true, completion: nil)
   }
+  
+  var selectedImage: UIImage?
 
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +59,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
       let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
     
       // Do something with the images (based on your use case)
+      selectedImage = originalImage
     
       // Dismiss UIImagePickerController to go back to your original view controller
       dismiss(animated: true, completion: nil)
@@ -80,6 +83,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         let annotation = MKPointAnnotation()
         annotation.coordinate = locationCoordinate
+        annotation.title = "insert title here"
         mapView.addAnnotation(annotation)
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
@@ -96,6 +100,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
       
       let imageView = annotationView?.leftCalloutAccessoryView as! UIImageView
       imageView.image = UIImage(named: "camera")
+      imageView.image = selectedImage
       
       return annotationView
     }
